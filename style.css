@@ -1,0 +1,417 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #181b1e;
+    color: #ffffff;
+    text-align: center;
+    background-image: url('./images/texture-dark.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: "Arial", "Verdana", sans-serif;
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(24, 30, 30, 0.95);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-bottom: 3px solid #EAE3D5;
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #6971e0;
+    text-shadow: 2px 2px 10px rgba(11, 100, 184, 0.5);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #a07146;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a:hover {
+    background-color: #EAE3D5;
+    transform: scale(1.1);
+}
+
+.hero {
+    position: relative;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Escurece o vídeo para melhor leitura */
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    color: #f5f5f5;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    z-index: 1;
+}
+
+
+.hero-content h2 {
+    font-size: 3.2rem;
+    color: #a07146;
+}
+
+.hero-content p {
+    font-size: 1.6rem;
+}
+
+.gallery {
+    padding: 60px 20px;
+    background: rgba(24, 30, 30, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 450px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #e7d3c0;
+    transition: transform 0.3s ease-in-out;
+}
+
+gallery img:hover {
+    transform: scale(1.05);
+}
+
+.map-container iframe {
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.about {
+    padding: 60px 20px;
+    background: rgba(24, 30, 30, 0.9);
+    border-radius: 15px;
+    max-width: 900px;
+    margin: 40px auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+
+#sobre {
+
+    color: #a07146;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: #292a2b;
+    color: #a07146;
+    
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Garante que fiquem alinhadas à esquerda */
+    gap: 20px; /* Espaçamento entre as categorias */
+    padding: 20px;
+}
+
+.categoria {
+    flex: 1 1 calc(33.33% - 20px); /* Três categorias por linha */
+    min-width: 250px; /* Tamanho mínimo */
+    max-width: 350px; /* Tamanho máximo */
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px #a07146;
+    text-align: left; /* Alinha o texto e os itens dentro da categoria */
+    transition: transform 0.3s ease-in-out;
+}
+
+.categoria:hover {
+    transform: scale(1.05);
+}
+
+.categoria h3 {
+    color: #a07146;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #bda793;
+    padding-bottom: 5px;
+}
+
+.lista-cardapio {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-item {
+    background: #a07146;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.menu-item:hover {
+    background: #e7d3c0;
+    transform: scale(1.05);
+}
+
+#categorias-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px;
+}
+
+.categoria {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px #a07146;
+    width: 250px; /* Largura fixa para cada categoria */
+}
+
+.lista-cardapio {
+    margin-top: 10px;
+}
+
+.prato {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+
+#lista-eventos {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.evento-item {
+    width: 300px;
+}
+
+.evento-card {
+    background: rgba(80, 72, 51, 0.514); /* Verde neon suave */
+    border: 2px solid #a07146;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.evento-card:hover {
+    transform: scale(1.05);
+}
+
+.emoji {
+    font-size: 30px;
+}
+
+.evento-info h4 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.evento-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.evento-data {
+    font-size: 12px;
+    color: #888;
+}
+
+
+/* 🎛️ Painel de Administração */
+#cardapio-admin, #eventos-admin, #imagens-admin {
+    max-width: 800px;
+    margin: 40px auto;
+    background: rgba(24, 30, 30, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #a07146;
+}
+
+#cardapio-admin h2, #eventos-admin h2, #imagens-admin h2 {
+    text-align: center;
+    color: #a07146;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+/* 📋 Estilização dos formulários */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #EAE3D5;
+}
+
+input, select, button {
+    padding: 10px;
+    border: 2px solid #a07146;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #181b1e;
+    color: #e7d3c0;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #EAE3D5;
+    box-shadow: 0 0 10px #EAE3D5;
+}
+
+button {
+    cursor: pointer;
+    background-color: #464441;
+    color: #a07146;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #EAE3D5;
+    transform: scale(1.05);
+}
+
+/* 🗂 Categorias e lista de eventos */
+#categorias-container, #lista-eventos {
+    margin-top: 15px;
+    background: rgba(0, 0, 0, 0.151);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#lista-eventos li {
+    background: #41403ec9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+#lista-eventos li:hover {
+    background: #eae3d567;
+    transform: scale(1.05);
+}
+
+/* 🖼️ Estilização da Galeria */
+#galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#galeria img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #a07146;
+    transition: 0.3s;
+}
+
+#galeria img:hover {
+    transform: scale(1.1);
+    border-color: #EAE3D5;
+}
+
+
+/* Ocultar menu apenas na página adm.html */
+body.admin-page nav {
+    display: none;
+}
+
+@keyframes glowRotate {
+    0% {
+        box-shadow: 0 0 10px #EAE3D5;
+    }
+    25% {
+        box-shadow: 0 0 15px #9e7401;
+    }
+    50% {
+        box-shadow: 0 0 20px #a07146;
+}
+    75% {
+        box-shadow: 0 0 15px #813f02;
+    }
+    100% {
+        box-shadow: 0 0 10px #ffda61;
+    }
+}
+
+button:hover, 
+nav a:hover, 
+.menu-item:hover, 
+.categoria:hover, 
+.evento-card:hover {
+    animation: glowRotate 1s infinite linear;
+}
+

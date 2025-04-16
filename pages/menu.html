@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cardápio - Soul Restaurante</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Nosso Cardápio</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="menu.html">Cardápio</a></li>
+                <li><a href="events.html">Eventos</a></li>
+                <li><a href="about.html">Sobre</a></li>
+            </ul>
+        </nav>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Buscar no cardápio...">
+        </div>
+    </header>
+
+    <section class="menu">
+        <h2>Cardápio</h2>
+        <div id="categorias-container"></div> <!-- Categorias dinâmicas aqui -->
+    </section>
+    
+    <script>
+        async function carregarCardapio() {
+            const resposta = await fetch('http://localhost:5000/cardapio');
+            const cardapio = await resposta.json();
+    
+            let container = document.getElementById("categorias-container");
+            container.innerHTML = "";
+
+            // Criar um mapa para armazenar pratos por categoria
+            let categorias = {};
+
+            cardapio.forEach(item => {
+                if (!categorias[item.categoria]) {
+                    categorias[item.categoria] = [];
+                }
+                categorias[item.categoria].push(item);
+            });
+
+            // Criar as seções para cada categoria
+            Object.keys(categorias).forEach(categoria => {
+                let categoriaDiv = document.createElement("div");
+                categoriaDiv.classList.add("categoria");
+
+                let tituloCategoria = document.createElement("h3");
+                tituloCategoria.textContent = categoria;
+                categoriaDiv.appendChild(tituloCategoria);
+
+                let lista = document.createElement("ul");
+                lista.classList.add("lista-cardapio");
+
+                categorias[categoria].forEach(item => {
+                    let li = document.createElement("li");
+                    li.classList.add("menu-item");
+                    li.textContent = `🍽️ ${item.nome} - ${item.descricao} - R$ ${item.preco}`;
+                    lista.appendChild(li);
+                });
+
+                categoriaDiv.appendChild(lista);
+                container.appendChild(categoriaDiv);
+            });
+        }
+
+        function filtrarCardapio() {
+            let input = document.getElementById("search-bar").value.toLowerCase();
+            let categorias = document.querySelectorAll(".categoria");
+
+            categorias.forEach(categoriaDiv => {
+                let tituloCategoria = categoriaDiv.querySelector("h3").textContent.toLowerCase();
+                let itens = categoriaDiv.querySelectorAll(".menu-item");
+                let categoriaVisivel = false;
+
+                itens.forEach(item => {
+                    if (item.textContent.toLowerCase().includes(input) || tituloCategoria.includes(input)) {
+                        item.style.display = "block";
+                        categoriaVisivel = true; // Se um item corresponde, a categoria deve aparecer
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+
+                // Se nenhum item da categoria for visível, esconder a categoria
+                if (categoriaVisivel) {
+                    categoriaDiv.style.display = "block";
+                } else {
+                    categoriaDiv.style.display = "none";
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", carregarCardapio);
+        document.getElementById("search-bar").addEventListener("input", filtrarCardapio);
+    </script>
+
+    <footer>
+        <p>© 2025 Soul Restaurante - Todos os direitos reservados.</p>
+    </footer>
+
+    <style>
+        .search-container {
+            position: absolute;
+            top: 20px;
+            left: 300px;
+        }
+        
+        #search-bar {
+            padding: 10px;
+            width: 250px;
+            border: 2px solid #a07146;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1rem;
+            background-color: #0a0a0a;
+            color: #EAE3D5;
+            transition: 0.3s;
+        }
+        
+        #search-bar:focus {
+            border-color: #fff1b5;
+            box-shadow: 0 0 10px rgba(216, 139, 24, 0.5);
+        }
+
+        .categoria {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px #a07146;
+        }
+
+        .categoria h3 {
+            color: #a07146;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .lista-cardapio {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-item {
+            background: #41403ec9;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .menu-item:hover {
+            background: #eae3d567;
+            transform: scale(1.05);
+        }
+    </style>
+
+</html>

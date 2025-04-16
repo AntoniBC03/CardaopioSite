@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - Soul Restaurante</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Eventos no Soul Gastrobar</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="menu.html">Cardápio</a></li>
+                <li><a href="events.html">Eventos</a></li>
+                <li><a href="about.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="events">
+        <h2>Próximos Eventos</h2>
+        <ul id="lista-eventos"></ul>
+    </section>
+    
+    <script>
+        async function carregarEventos() {
+            try {
+                const resposta = await fetch('http://localhost:5000/eventos');
+                const eventos = await resposta.json();
+
+                let lista = document.getElementById("lista-eventos");
+                lista.innerHTML = "";
+
+                eventos.forEach(evento => {
+                    let dataFormatada = new Date(evento.data).toLocaleDateString('pt-BR');
+
+                    let li = document.createElement("li");
+                    li.classList.add("evento-item");
+                    li.innerHTML = `
+                        <div class="evento-card">
+                            <span class="emoji">🎉</span>
+                            <div class="evento-info">
+                                <h4>${evento.nome}</h4>
+                                <p>${evento.descricao}</p>
+                                <span class="evento-data">📅 ${dataFormatada}</span>
+                            </div>
+                        </div>
+                    `;
+                    lista.appendChild(li);
+                });
+            } catch (erro) {
+                console.error("Erro ao carregar eventos:", erro);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", carregarEventos);
+    </script>
+
+    <footer>
+        <p>© 2025 Soul Restaurante - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

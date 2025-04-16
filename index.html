@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul - Gastrobar</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1>Soul Gastrobar</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="pages/menu.html">Cardápio</a></li>
+                <li><a href="pages/events.html">Eventos</a></li>
+                <li><a href="pages/about.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <video autoplay muted loop class="background-video">
+            <source src="videos/VideoFundo.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos em HTML5.
+        </video>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h2>Bem-vindo ao Soul!</h2>
+            <p>Um gastrobar sofisticado com pratos exclusivos para você.</p>
+        </div>
+    </section>
+    
+
+    <section class="gallery">
+        <h2>Nosso Espaço</h2>
+        <div id="galeria"></div>
+    </section>
+    
+    <script>
+        async function carregarImagens() {
+            const resposta = await fetch("http://localhost:5000/imagens");
+            const imagens = await resposta.json();
+    
+            let galeria = document.getElementById("galeria");
+            galeria.innerHTML = "";
+    
+            imagens.forEach(img => {
+                let imgElement = document.createElement("img");
+                imgElement.src = "http://localhost:5000" + img.caminho;
+                imgElement.alt = img.nome;
+                imgElement.style.width = "150px";
+                imgElement.style.margin = "5px";
+                galeria.appendChild(imgElement);
+            });
+        }
+    
+        document.addEventListener("DOMContentLoaded", carregarImagens);
+    </script>
+    
+    
+    <section class="map">
+        <h2>Onde Estamos</h2>
+        <p>Visite-nos e tenha uma experiência incrível!</p>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.639372530383!2d-45.57807072468574!3d-23.037009779163633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ccf9974d00bb15%3A0xfdde2c12e6d574b9!2sSoul%20Gastrobar!5e0!3m2!1spt-BR!2sbr!4v1742741834182!5m2!1spt-BR!2sbr" 
+            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+            </iframe>
+        </div>
+    </section>
+    
+    <section class="about">
+        <h2 id="sobre">Sobre Nós</h2>
+        <p>O Soul Restaurante é um espaço sofisticado e aconchegante, perfeito para momentos especiais. Nossa gastronomia traz o melhor da culinária contemporânea com ingredientes frescos e de alta qualidade.</p>
+    </section>
+    
+    
+
+
+    
+    <footer>
+        <p>© 2025 Soul Restaurante - Todos os direitos reservados.</p>
+    </footer>
+
+
+</body>
+</html>

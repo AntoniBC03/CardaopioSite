@@ -1,0 +1,79 @@
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Administração - Soul Restaurante</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <body class="admin-page">
+
+        <header>
+            <h1>Painel de Administração</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Início</a></li>
+                    <li><a href="menu.html">Cardápio</a></li>
+                    <li><a href="events.html">Eventos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="cardapio-admin">
+            <h2>Gerenciar Cardápio</h2>
+            
+            <h3>Adicionar Prato</h3>
+            <form id="form-cardapio">
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" required>
+                    <option value="">Selecione uma categoria</option> <!-- 🔹 Adiciona opção inicial -->
+                </select>
+
+
+                <input type="text" id="nome" placeholder="Nome do prato" required>
+                <input type="text" id="descricao" placeholder="Descrição" required>
+                <input type="number" id="preco" placeholder="Preço" required>
+
+                <button type="submit">Adicionar Prato</button>
+
+                <h3>Lista de Pratos</h3>
+                <ul id="lista-cardapio"></ul> <!-- 🔹 Aqui os pratos serão listados -->
+
+            </form>
+
+            <h3>Adicionar Nova Categoria</h3>
+            <form id="form-categoria">
+                <input type="text" id="nova-categoria" placeholder="Nome da categoria" required>
+                <button type="submit">Adicionar Categoria</button>
+            </form>
+
+            <div id="categorias-container"></div>
+
+        </section>
+
+        <section id="eventos-admin">
+            <h2>Gerenciar Eventos</h2>
+            <form id="form-evento">
+                <input type="text" id="titulo" placeholder="Título do Evento" required>
+                <input type="text" id="descricao-evento" placeholder="Descrição" required>
+                <input type="date" id="data" required>
+                <button type="submit">Adicionar Evento</button>
+            </form>
+            <h3>Lista de Eventos</h3>
+            <ul id="lista-eventos"></ul>
+        </section>
+
+        <section id="imagens-admin">
+            <h2>Gerenciar Imagens</h2>
+            <form id="form-imagem">
+                <input type="file" id="imagem" accept="image/*" required>
+                <button type="submit">Enviar Imagem</button>
+            </form>
+            <h3>Galeria</h3>
+            <div id="galeria"></div>
+        </section>
+
+        <script src="admin.js"></script>
+
+    </body>
+    </html>
